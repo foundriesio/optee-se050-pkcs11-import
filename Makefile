@@ -8,7 +8,7 @@ READELF ?= ${CROSS_COMPILE}readelf
 
 OBJS = main.o
 
-CFLAGS += -Wall -I../ta/include -I./
+CFLAGS += -Wall -I./
 CFLAGS += -I${TEEC_EXPORT}/include
 LDADD += $(LDFLAGS) -lteec -L${TEEC_EXPORT}
 

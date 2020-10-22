@@ -94,14 +94,14 @@ static int do_certificate(uint32_t nxp, char *id, char *pin)
 	terminate_tee_session(&ctx);
 	if (res)
 		return -1;
-		
+
 	file = fopen(DER_CERT, "w");
 	if (!file)
 		return -EINVAL;
 
 	len = fwrite(buffer, 1, op.params[1].value.a, file);
 	fclose(file);
-	if (len != op.params[1].value.a) 
+	if (len != op.params[1].value.a)
 		return -EIO;
 
 	memset(buffer, '\0', sizeof(buffer));

@@ -192,7 +192,9 @@ static void usage(void)
 
 int main(int argc, char *argv[])
 {
-	char *sks_pin, *sks_id, *sks_token, *sks_type, *nxp_id;
+	char *sks_pin = NULL, *sks_id = NULL;
+	char *sks_token = NULL, *sks_type = NULL;
+	char *nxp_id = NULL;
 	bool do_cert = false, do_keyp = false;
 	int lindex, opt;
 

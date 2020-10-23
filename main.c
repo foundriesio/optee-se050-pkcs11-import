@@ -78,6 +78,7 @@ static int do_certificate(uint32_t nxp, char *id, char *pin)
 	uint32_t origin;
 	FILE *file;
 	size_t len;
+	int ret;
 
 	prepare_tee_session(&ctx);
 	memset(&op, 0, sizeof(op));
@@ -107,8 +108,10 @@ static int do_certificate(uint32_t nxp, char *id, char *pin)
 	memset(buffer, '\0', sizeof(buffer));
 
 	sprintf(import_cert, cmd.import_cert, pin, id);
-	system(import_cert);
-	system(cmd.rm_der);
+	ret = system(import_cert);
+	if (ret)
+		errx(1, "pkcs11-tool import certificate failed with code %d", ret);
+	ret = system(cmd.rm_der);
 
 	return 0;
 }
@@ -116,11 +119,14 @@ static int do_certificate(uint32_t nxp, char *id, char *pin)
 static int do_keypairgen(uint32_t k, char *id, char *pin, char *token, char *t)
 {
 	char import_keyp[2048] = { '\0' };
+	int ret = 0;
 
 	sprintf(import_keyp, cmd.import_keyp, t, pin, id, k, token);
-	system(import_keyp);
+	ret = system(import_keyp);
+	if (ret)
+		errx(1, "pkcs11-tool keypairgen failed with code %d", ret);
 
-	return 0;
+	return ret;
 }
 
 static const struct option options[] = {

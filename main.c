@@ -33,9 +33,9 @@ static const struct {
 	.rm_der = "rm "DER_CERT,
 	.rm_pem = "rm "PEM_CERT,
 	.der2pem = "openssl x509 -inform der -in " DER_CERT " -out " PEM_CERT,
-	.import_cert = "pkcs11-tool --module /usr/lib/libsks.so.0.0 -l "
+	.import_cert = "pkcs11-tool --module /usr/lib/libckteec.so.0.1 -l "
 	"--type cert --pin %s --id %s --write-object " DER_CERT,
-	.import_keyp = "pkcs11-tool --module /usr/lib/libsks.so.0.0 "
+	.import_keyp = "pkcs11-tool --module /usr/lib/libckteec.so.0.1 "
 	"--key-type %s --pin %s --id %s --label SE_%x --token-label %s "
 	"--keypairgen "
 };

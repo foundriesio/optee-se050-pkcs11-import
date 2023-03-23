@@ -1,6 +1,6 @@
 
 ============================================================================
-OBSOLETE: PLEASE USE https://github.com/foundriesio/pkcs11-cert-import-apdu
+OBSOLETE: PLEASE USE https://github.com/foundriesio/fio-se05x-cli
 ============================================================================
 
 
